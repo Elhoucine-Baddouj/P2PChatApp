@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" type="image/jpg" href="badr.jpeg">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5; 
+            display: flex;
+            background-image: url('img3.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        
+        .container {
+            background-color: rgba(44, 43, 43, 0.404);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgb(238, 172, 238); 
+            padding: 40px;
+            width: 450px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            color: white;
+            border: 3px solid #3aafdc;
+        }
+
+        .container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px white;
+        }
+
+        .form-wrapper {
+            text-align: center;
+        }
+
+        h2 {
+            color: white;
+            margin-bottom: 30px;
+            font-size: 24px; 
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: white;
+            font-weight: bold; 
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 3px solid #3aafdc; 
+            border-radius: 50px;
+            box-sizing: border-box;
+            font-size: 16px; 
+            transition: border-color 0.3s;
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: white;
+            outline: none;
+        }
+
+        button[type="submit"] {
+            background-color: #3aafdc;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 18px; 
+        }
+
+        button[type="submit"]:hover {
+            background-color: #645abace; 
+        }
+
+        a {
+            color: #0084ff; 
+            text-decoration: none;
+            font-weight: bold; 
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 100px; 
+            border-radius: 100%;
+            transition: transform 0.3s;
+        }
+
+        .logo img:hover {
+            transform: rotate(360deg);
+        }
+
+        .profile-pic {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-pic img {
+            width: 100px; 
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo">
+        </div>
+        <div class="form-wrapper">
+            <h2>Connexion</h2>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="email">Email <i class='bx bxl-gmail'></i></label>
+                    <input type="email" id="email" name="email" placeholder="Entrez votre email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Mot de passe <i class='bx bxs-lock-alt'></i></label>
+                    <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" required>
+                </div>
+                <button type="submit">Connexion</button>
+            </form>
+            <p>Vous n'avez pas de compte ? <a href="register.html">Créer un compte</a></p>
+            <p id="message"></p> 
+        </div>
+    </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const message = document.getElementById('message');
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+                const result = await response.text();
+                if (response.status === 200) {
+                    window.location.href = 'home.html'; 
+                } else {
+                    message.style.color = 'red';
+                    message.innerText = result;
+                }
+            } catch (error) {
+                message.style.color = 'red';
+                message.innerText = 'Erreur de connexion au serveur';
+            }
+        });
+
+        // async function loadProfile() {
+        //     try {
+        //         const response = await fetch('/profile');
+        //         if (response.status === 200) {
+        //             const user = await response.json();
+        //             if (user.profilePicture) {
+        //                 document.getElementById('profilePic').innerHTML = `<img src="data:image/jpeg;base64,${user.profilePicture}" alt="Photo de profil">`;
+        //             } else {
+        //                 document.getElementById('profilePic').innerText = 'Photo de profil non disponible';
+        //             }
+        //         } else {
+        //             console.log('Erreur de chargement du profil');
+        //         }
+        //     } catch (error) {
+        //         console.log('Erreur de connexion au serveur pour le profil', error);
+        //     }
+        // }
+
+        // window.onload = loadProfile;
+    </script>
+</body>
+</html>

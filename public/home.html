@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="badr.jpeg" type="image/png">
+    <title>Area 117</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- <div id="usernameModal" class="modal">
+        <form method="post" id="signup">
+            <div class="modal-content">
+                <h2>Enter your username</h2>
+                <input type="text" id="usernameInput" required="" name="Username" placeholder="Username" autofocus>
+                <button id="submitUsername" type="submit">Submit</button>
+            </div>
+        </form>
+    </div> -->
+
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <h2>Profile Information</h2>
+            <img id="profilePicture" alt="Profile Picture">
+            <p id="profileUsername"></p>
+            <p id="profileId"></p>
+            <button id="closeProfileModal">Close</button>
+        </div>
+    </div>
+
+    <div id="loadingDiv">
+        <div id="loadingContent">
+            <div class="loader"></div>
+            <p>Sending chat request ..</p>
+        </div>
+    </div>
+
+    <div id="callRequestDiv">
+        <div id="callRequestContent">
+            <p id="request_src"></p>
+            <div class="pulsating-dot"></div>
+            <div class="request-button-container">
+                <button class="request-btn request-btn-accept" onclick="accept_answer()">Accept</button>
+                <button class="request-btn request-btn-reject" onclick="reject_answer()">Reject</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="header">
+        <div id="usersContainer"></div>
+    </div>
+    <div class="container">
+        <div class="button-container">
+            <button id="homeButton"><i class="bi bi-house-door-fill"></i></button>
+            <button id="profileButton"><i class="bi bi-person-fill"></i></button>
+            <button id="settingsButton"><i class="bi bi-toggles"></i></i></button>
+            <button id="closeButton"><i class="bi bi-x-square-fill"></i></button>
+        </div>
+        <div class="smallContainer">
+            <div class="latestContainer">
+                <div class="latestText">
+                    <h3>Latest chat</h3>
+                    <i class="bi bi-filter"></i>
+                </div>
+                <div id="latestChat">
+                </div>
+            </div>
+            <div id="chat">
+                <div class="statC">
+                    <div id="recvC"></div>
+                    <div class="leave">
+                        <button type="button" id="leaveroom" onclick="Leaveroom()">Leave</button>
+                    </div>
+                </div>
+                <div id="convC"></div>
+                <div class="typeC">
+                    <div class="input-container">
+                        <input type="text" id="chat-input" placeholder="Type a message...">
+                        <i class="bi bi-folder-plus"></i>
+                        <i class="bi bi-geo-alt"></i>
+                        <i class="bi bi-mic"></i>
+                    </div>
+                    <button type="submit" id="submit-input" onclick="sendMessage()">
+                        <i class="bi bi-send-fill"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

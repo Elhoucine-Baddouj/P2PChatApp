@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un compte</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" type="image/jpg" href="logo.jpg">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5; 
+            display: flex;
+            background-image: url(img3.jpg) ;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+
+        }
+        .wrapper {
+            width: 420px;
+            background :#0084ff;
+            color: #fff;
+            border-radius: 10px;
+            padding: 30px 40px;
+        }
+        
+        .container {
+            background-color:rgba(44, 43, 43, 0.392);
+            border-radius: 15px; 
+            box-shadow: 0 4px 8px rgb(238, 172, 238); 
+            padding: 40px;
+            width: 450px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background-size: cover;
+            background-position: center;
+            color:white;
+            border: 3px solid #3aafdc;
+    
+        }
+
+        .container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px white;
+    
+        }
+
+        .form-wrapper {
+            text-align: center;
+            background-color:rgb(233, 137, 233);
+            background : transparent
+        }
+
+        h2 {
+            color:white;
+            margin-bottom: 30px;
+            font-size: 24px; 
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: white;
+            font-weight: bold; 
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            border: 3px solid #3aafdc; 
+            border-radius: 50px; 
+            box-sizing: border-box;
+            font-size: px; 
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        input[type="file"]:focus {
+            border-color:white;
+            outline: none;
+        }
+
+        button[type="submit"] {
+            background-color: #3aafdc; 
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 18px; 
+        }
+
+        button[type="submit"]:hover {
+            background-color: #645abace; 
+        }
+
+        a {
+            color: #0084ff; 
+            text-decoration: none;
+            font-weight: bold; 
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        } 
+
+        .logo img {
+            width: 100px; 
+            border-radius: 100%;
+            transition: transform 0.3s;
+        }
+
+        .logo img:hover {
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo">
+        </div>
+        <div class="form-wrapper">
+            <h2>Créer un compte</h2>
+            <form action="/register" method="POST" enctype="multipart/form-data">
+                <div class="input-group">
+                    <label for="username">Nom d'utilisateur <i class='bx bxs-user'></i></label>
+                    <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email <i class='bx bxl-gmail'></i></label>
+                    <input type="email" id="email" name="email" placeholder="Entrez votre email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Mot de passe <i class='bx bxs-lock-alt'></i></label>
+                    <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" required>
+                </div>
+                <div class="input-group">
+                    <label for="photo"> Photo de profil <i class='bx bxs-photo-album'></i></label>
+                    <input type="file" id="photo" name="photo" accept="image/*">
+                </div>
+                <button type="submit">Créer un compte</button>
+            </form>
+            <p>Vous avez déjà un compte ? <a href="index.html">Connectez-vous</a></p>
+        </div>
+    </div>
+</body>
+</html>
